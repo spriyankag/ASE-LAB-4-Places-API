@@ -1,0 +1,27 @@
+<ion-view title="List" cache-view="false">
+    <ion-content padding="'true'" class="has-header" ng-controller = 'listCtrl' on-swipe-right="goBackward()">
+        <!--ID number is displayed here-->
+    	<h4 class = "titleLine">Choose group to display <span class ="rigthID">{{dbid}}</span></h4>
+        <!--list of possible groups-->
+    	<div class="row" ng-repeat="rows in chunkedData track by $index">
+            <div class="col col-50" ng-repeat="item in rows track by $index">
+                <label class="item item-radio card noMargin" >
+                    <input type="radio" name="group" ng-model='choice.checked' value='{{item}}' ng-change='updateList()'/>
+                    <div class="radio-content">
+                      <div class="item-content">
+                        {{item}}
+                      </div>
+                      <i class="radio-icon ion-checkmark"></i>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <!--list of words in the selected group-->
+        <ion-list class = "card" show-delete="false" can-swipe="true">
+    		<ion-item ng-repeat="(key, value) in words track by $index">
+    		    {{key}}  <span style = "float:right">{{value}}</span>
+    		    <ion-option-button class="button-assertive icon ion-trash-a" ng-click="deletion(key)"></ion-option-button>
+    		</ion-item>
+		</ion-list>
+    </ion-content>
+</ion-view>

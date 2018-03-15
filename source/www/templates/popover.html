@@ -1,0 +1,32 @@
+<style>.popover { top: 40% !important;  height:60% !important; width: 60% !important; margin-right: 20% !important; margin-left: 20% !important; }</style>
+<ion-popover-view>
+  <ion-content>
+    <!--form to type name-->
+    <form class="card">
+      <label class="item item-input">
+          <span class="input-label">Name</span>
+          <input type="text" placeholder="type here" ng-model = 'newlanguage.name'>
+      </label>
+    </form>
+    <!--buttons for submission-->
+    <div class="row">
+       <div class="col text-center">
+         <button class="button button-outline button-energized" ng-click = 'newLang(newlanguage.name)'>Add Group</button>
+       </div>
+    </div>
+    <!--section to delete groups-->
+    <h5 style ='padding-left: 1em;'>Or delete some old ones</h5>
+    <ion-list show-delete="false" can-swipe="true">
+      <ion-item ng-repeat="item in langs track by $index">
+        <span style ="line-height: 0px; vertical-align: bottom;">{{item}}</span>
+        <a class="button button-outline ion-ios-trash button-assertive" style ="float: right;" ng-click="deletion(item)"></a>
+      </ion-item>
+    </ion-list>
+    <!--my hidden button to import my own words-->
+    <div class="row">
+       <div class="col text-center">
+         <button class="button button-small button-outline button-energized" ng-click = 'importWords()'>Import</button>
+       </div>
+    </div>
+  </ion-content>
+</ion-popover-view

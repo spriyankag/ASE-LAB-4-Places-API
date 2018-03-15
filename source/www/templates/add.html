@@ -1,0 +1,39 @@
+<ion-view title="Add">
+    <ion-content padding="'true'" class="has-header" ng-controller = 'addCtrl' on-swipe-left="goForward()" on-swipe-right="goBackward()">
+        <h4 class = "titleLine">Type in the new word</h4>
+        <!--section for the input of the new word -->
+        <form class="card formStyle">
+            <label class="item item-input">
+                <span class="input-label">New Word</span>
+                <input type="text" placeholder="type here" ng-model = 'list.word'/>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Meaning</span>
+                <input type="text" placeholder="type here" ng-model = 'list.meaning'/>
+            </label>
+        </form>
+        <!--the list of possible groups the user can put his words in-->
+        <h4 class = "titleLine">Choose group</h4>
+        <div class="row" ng-repeat="rows in chunkedData track by $index">
+            <div class="col col-50" ng-repeat="item in rows track by $index">
+                <label class="item item-radio card noMargin">
+                    <input type="radio" name="group" ng-model='choice.checked' value="{{item}}"/>
+                    <div class="radio-content" ng-model='choice' value="{{item}}">
+                      <div class="item-content" ng-model='choice' value="{{item}}">
+                        {{item}} 
+                      </div>
+                      <i class="radio-icon ion-checkmark"></i>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <!--button for the popover to add new group-->
+        <button class="card button icon-left  extraMargin" ng-click="popover.show($event)"> + New group</button>
+        <!--final submit button-->
+        <div class="row row-bottom">
+            <div class="col text-center">
+                 <button class="button button-outline button-energized button-large" ng-click = 'save()'>Save word</button>
+            </div>
+        </div> 
+    </ion-content>
+</ion-view>
